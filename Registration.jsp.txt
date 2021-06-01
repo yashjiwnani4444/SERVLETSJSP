@@ -1,0 +1,27 @@
+//Hello everyone
+//Here is a simple code of form ,i am not usin CSS here i am learning and will update in next commit
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="Register" method="Post">
+<table>
+<tr><td>First Name:</td><td><input type="text" name="FNAME"></td></tr>
+<tr><td>Last Name:</td><td><input type="text" name="LNAME"></td></tr>
+<tr><td>Address:</td><td><input type="text" name="address"></td></tr>
+<tr><td>City:</td><td><input type="text" name="city"></td></tr>
+<tr><td>State:</td><td><input type="text" name="state"></td></tr>
+<tr><td>ZIP:</td><td><input type="text" name="z"></td></tr>
+<tr><td>Phone:</td><td><input type="text" name="phone"></td></tr>
+<tr><td>UserLoginId:</td><td><input type="text" name="UserId"></td></tr>
+<tr><td>Password:</td><td><input type="password" name="password"></td></tr>
+<tr><td>REGISTER</td><td><input type="SUBMIT" name="register" name="REGISTER"></td></tr>
+</table>
+</form>>
+</body>
+</html>

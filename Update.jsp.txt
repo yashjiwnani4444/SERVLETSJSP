@@ -1,0 +1,31 @@
+//This is a update page where we have to update the information
+//CSS and page designing is remaining as I am still learning that skill
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="Register" method="post">
+<table>
+<tr><td>First Name:</td><td><input type="text" name="FNAME"></td></tr>
+<tr><td>Last Name:</td><td><input type="text" name="LNAME"></td></tr>
+<tr><td>Address:</td><td><input type="text" name="address"></td></tr>
+<tr><td>City:</td><td><input type="text" name="city"></td></tr>
+<tr><td>State:</td><td><input type="text" name="state"></td></tr>
+<tr><td>ZIP:</td><td><input type="text" name="z"></td></tr>
+<tr><td>Phone:</td><td><input type="text" name="phone"></td></tr>
+<tr><td>PartyId:</td><td><input type="number" name="partyid"></td></tr>
+<tr><td>UPDATE:</td><td><input type="Submit" name="register"></td></tr>
+
+</table>
+
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+//this is a servlet that i used for processing CRUD Oerations
+//This is a very important servlet class which i used for controlling all the request and response object 
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Register")
+public class Register extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public Register() {
+        super();
+      
+    }
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	String FNAME=request.getParameter("FNAME");
+	String LNAME=request.getParameter("LNAME");
+	String address=request.getParameter("address");
+	String city=request.getParameter("city");
+	String state=request.getParameter("state");
+	String z=request.getParameter("z");
+	String phone=request.getParameter("phone");
+	String UserId=request.getParameter("UserId");
+	String password=request.getParameter("password");
+	String partyid=request.getParameter("partyid");
+	
+//Above i am fetching the value that is give by DAO class	
+Member member =new Member(FNAME,LNAME,address,city,state,z,phone,UserId,password,partyid);
+try
+{
+RegisterDao rDao=new RegisterDao();
+rDao.Update(member);
+}
+catch(Exception e)
+{}
+try
+{
+RegisterDao rDao=new RegisterDao();
+rDao.Delete(partyid);
+}
+catch(Exception e)
+{}
+try {
+RegisterDao rDao=new RegisterDao();
+rDao.insert(member);
+}
+catch(Exception e)
+{
+e.getMessage();	
+}
+}
+}
+//Note-Servlets are the middle and most important part of MVC architecture

@@ -1,0 +1,176 @@
+//Hello ---
+//This is the biggest file and very important file of my project
+//I used one class for all the connection and setup process
+//This is the DAO Layer(majorly used for jdbc)
+//Search operation are in working 
+//Every operation inserting,updating,deletion of data is eorking in my project
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class RegisterDao {
+	private String dbUrl="jdbc:mysql://localhost:3306/servlet";
+	private String dbUname="root";
+	private String dbPassword="Yash@1626";
+	private String dbDriver="com.mysql.cj.jdbc.Driver";
+	private static final String SELECT_USER_BY_ID="select FNAME,LNAME from party2 where partyid like";
+	private static final String UPDATE="update party2 set FNAME=?,LNAME=?,address=?,city=?,state=?,z=?,phone=? where partyid=?";
+	private static final String DELETE="delete from party2 where partyid=?";
+		public void loadDriver(String dbDriver) throws ClassNotFoundException
+	{
+		
+		Class.forName(dbDriver);
+	}
+	public Connection getConnection()
+	{
+		Connection con=null;
+		try {
+			con=DriverManager.getConnection(dbUrl,dbUname,dbPassword);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return con;//Here i am returning the connection object
+	}
+	public String Search(Search search) throws ClassNotFoundException, SQLException
+	{
+		loadDriver(dbDriver);
+		Connection con=getConnection();
+		try
+		{
+		String query="select * from party2";
+		
+		PreparedStatement ps=con.prepareStatement(query);
+		
+		ps.setString(1,search.getFNAME());
+		ps.setString(2,search.getLNAME());
+			
+			ps.executeUpdate();
+	
+		
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return null;
+	}
+	public String insert(Member member) throws ClassNotFoundException
+	{
+		loadDriver(dbDriver);
+		Connection con=getConnection();
+		String result="Data entered successfully";
+		
+		String sql="insert into Party2 values(?,?,?,?,?,?,?,?)";
+		String sql1="insert into UserLogin2 values(?,?,?)";
+		try
+		{
+		PreparedStatement ps=con.prepareStatement(sql);	
+		ps.setString(1,member.getFNAME());
+		ps.setString(2,member.getLNAME());
+		ps.setString(3,member.getAddress());
+		ps.setString(4,member.getCity());
+		ps.setString(5,member.getState());
+		ps.setString(6,member.getZ());
+		ps.setString(7,member.getPhone());
+		ps.setString(8,member.getPartyId());
+		//Prepared Statement is used by me here as we are setting the value hence we have to use these
+		ps.executeUpdate();
+		
+		
+		PreparedStatement ps1=con.prepareStatement(sql1);
+		
+		ps1.setString(1,member.getUserId());
+		ps1.setString(2,member.getPassword());
+		ps1.setString(3,member.getPartyId());
+		
+		ps1.executeUpdate();
+		
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			result="Data not entered";
+		}
+		
+		
+		return result;
+	}
+	public String Search(int partyid)
+	{
+		try
+		{
+		Member member=null;
+        loadDriver(dbDriver);
+		Connection con=getConnection();
+		PreparedStatement ps=con.prepareStatement(SELECT_USER_BY_ID);
+		ps.setInt(1,partyid);
+		System.out.println(ps);
+		ResultSet rs=ps.executeQuery();
+		while(rs.next())
+		{
+			String FNAME=rs.getString("FNAME");
+			String LNAME=rs.getString("LNAME");
+			String address=rs.getString("address");
+			String city=rs.getString("city");
+			String state=rs.getString("state");
+			String z=rs.getString("z");
+			String phone=rs.getString("phone");
+			String UserId=rs.getString("UserId");
+			String password=rs.getString("password");
+	Member member=new Member(FNAME,LNAME,address,city,state,z,phone,UserId,password);
+				}}
+		catch(Exception e)
+		{}
+		return member;
+	}
+	public boolean Update(Member member) throws ClassNotFoundException
+	{
+		boolean rowupdated;
+		try
+		{
+			
+			loadDriver(dbDriver);
+		
+		Connection con=getConnection();
+		PreparedStatement statement=con.prepareStatement(UPDATE);
+		statement.setString(1,member.getFNAME());
+		statement.setString(2,member.getLNAME());
+		statement.setString(3,member.getAddress());
+		statement.setString(4,member.getCity());
+		statement.setString(5,member.getState());
+		statement.setString(6,member.getZ());
+		statement.setString(7,member.getPhone());
+		statement.setString(8,member.getPartyId());
+		
+		rowupdated=statement.executeUpdate() > 0;
+		return rowupdated;
+		}
+		catch(Exception e)
+		{
+			
+			
+		}
+	return null != null;
+		
+	}
+	public String Delete(String partyid)
+	{
+		
+		try {
+	
+       loadDriver(dbDriver);
+		Connection con=getConnection();
+		PreparedStatement statement=con.prepareStatement(DELETE);
+		statement.setString(1, partyid);
+		statement.executeUpdate();
+		}
+		catch(Exception e)
+		{}
+		
+		return null;
+	}
+}
+//i hope you will understand code,as many classes here are self explainable(if you have any doubt email me-yashjiwnani4444@gmail.com)

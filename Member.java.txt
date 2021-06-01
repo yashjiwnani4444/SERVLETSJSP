@@ -1,0 +1,107 @@
+//Hello this is the POJO class all the getter setter and constructor handling are done here
+//In eclipse there is a feature (we just have to right click on our file click to source->than create getter setter and constructor option will be displayed there)
+import java.sql.SQLException;
+public class Member {
+	
+	private String FNAME,LNAME,address,city,state,z,phone,UserId,password,partyid;
+	public Member() {
+		super();
+	}
+
+	public Member(String fNAME, String lNAME, String address, String city, String state, String z, String phone,String UserId,String password,String partyid) {
+		super();
+		FNAME = fNAME;
+		LNAME = lNAME;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.z = z;
+		this.phone = phone;
+		this.password = password;
+		this.UserId = UserId;
+		this.partyid = partyid;
+		
+	}
+
+	public Member(String fNAME2, String lNAME2, String address2, String city2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getFNAME() {
+		return FNAME;
+	}
+
+	public void setFNAME(String fNAME) {
+		FNAME = fNAME;
+	}
+
+	public String getLNAME() {
+		return LNAME;
+	}
+
+	public void setLNAME(String lNAME) {
+		LNAME = lNAME;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getZ() {
+		return z;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	
+	public void setUserId(String UserId) {
+		this.UserId = UserId;
+	}
+
+	public String getUserId() {
+		return UserId;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+	public void setPartyId(String partyid) {
+		this.partyid = partyid;
+	}
+	public String getPartyId() {
+		
+		// TODO Auto-generated method stub
+		return partyid;
+	}
+
+
+	}
